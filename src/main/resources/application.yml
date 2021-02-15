@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password: "12345678"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/crm
+    username: "root"
+
+mybatis-plus:
+  mapper-locations: mapper/*.xml

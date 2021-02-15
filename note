@@ -1,0 +1,2 @@
+bug:access denied for user root@localhost
+原因：application.properties 没删，里面有初始数据，系统默认使用properties 的数据
