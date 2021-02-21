@@ -5,10 +5,10 @@
 <!--mapper为根元素，namespace指定了命名空间-->
 <mapper namespace="com.Ha_rlan.vueshoppingback.mapper.ClientMapper">
     <insert id="insert">
-        insert into c_client(account,c_password,p_number) values (#{account},#{password},#{phone})
+        insert into sp_user(username,password,user_email) values (#{username},#{password},#{email})
     </insert>
-    <select id="select" resultType="com.Ha_rlan.vueshoppingback.entity.Client">
-        select c_password FROM c_client where account = #{account}
+    <select id="selectByAc" resultType="com.Ha_rlan.vueshoppingback.entity.Client">
+        select username,password FROM sp_user where username = #{username}
     </select>
     <select id="selectList" resultType="Client">
         select account,c_password,p_number from c_client

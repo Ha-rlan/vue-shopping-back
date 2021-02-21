@@ -65,4 +65,16 @@ public interface IClientService extends IService<Client> {
     default List<Client> list() {
         return null;
     }
+
+    @Override
+    default Client getOne(Wrapper<Client> queryWrapper) {
+        return null;
+    }
+    //登陆验证
+    Client getOne(String account);
+
+    //    添加验证码生成事务
+    default String generateCode() {
+        return null;
+    }
 }

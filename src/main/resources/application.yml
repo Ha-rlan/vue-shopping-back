@@ -4,6 +4,16 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/crm
     username: "root"
+  messages:
+    basename: i18n/Messages,i18n/Pages
+  mail:
+    host: smtp.qq.com
+    username: 2564776749@qq.com
+    password: ejiptxrmuxxgdiad
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
 
 mybatis-plus:
   mapper-locations: mapper/*.xml

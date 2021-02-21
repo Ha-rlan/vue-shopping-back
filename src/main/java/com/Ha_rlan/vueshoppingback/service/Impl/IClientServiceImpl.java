@@ -10,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 @Service
 public class IClientServiceImpl extends ServiceImpl<ClientMapper,Client> implements IClientService {
 
@@ -75,5 +74,26 @@ public class IClientServiceImpl extends ServiceImpl<ClientMapper,Client> impleme
     public List<Client> list() {
         //查询列表的所有信息并返回数据
        return client.selectList(new QueryWrapper<Client>());
+    }
+    //登陆验证
+
+    public Client getOne(String username) {
+        return client.selectByAc(username);
+    }
+//验证码事务生成
+    @Override
+    public String generateCode() {
+        //这里随机六个数字吧，方法比较老土，思考下有没有其他方法简便些
+        int[] nums = new int[6];
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            int num = (int) Math.floor(Math.random()*10);
+            nums[i] = num;
+        }
+//        使用for循环遍历拼接
+        for (int num : nums) {
+            code.append(num);
+        }
+        return code.toString();
     }
 }
