@@ -1,6 +1,10 @@
 package com.Ha_rlan.vueshoppingback;
 
+import com.Ha_rlan.vueshoppingback.mapper.PermissionMapper;
+import com.Ha_rlan.vueshoppingback.service.Impl.IPermissionServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -8,12 +12,15 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootTest
 @WebAppConfiguration
 class VueShoppingBackApplicationTests {
     @Resource
     private JavaMailSender javaMailSender;
+    @Autowired
+    IPermissionServiceImpl iPermissionService;
 
     @Test
     void contextLoads() {
@@ -43,5 +50,8 @@ class VueShoppingBackApplicationTests {
 //        思路二：在生成的时候就转变成字符串，然后存到一个集合中，通过操作字符串进行拼接；这样还要new一个StringBuilder
 
     }
-
+    @Test
+    void selectTest(){
+        iPermissionService.list();
+    }
 }

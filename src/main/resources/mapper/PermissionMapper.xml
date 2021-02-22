@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Ha_rlan.vueshoppingback.mapper.PermissionMapper">
+    <resultMap id="permission_map" type="com.Ha_rlan.vueshoppingback.entity.Permission">
+        <id property="id" column="ps_id"></id>
+        <result property="name" column="ps_name"></result>
+        <result property="parent_id" column="ps_pid"></result>
+        <result property="controller" column="ps_c"></result>
+        <result property="control_function" column="ps_a"></result>
+        <result property="level" column="ps_level"></result>
+    </resultMap>
+    <select id="selectList" resultMap="permission_map">
+        select ps_id,ps_name,ps_pid,ps_c,ps_a,ps_level from sp_permission
+    </select>
+</mapper>
