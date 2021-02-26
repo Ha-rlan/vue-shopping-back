@@ -1,8 +1,8 @@
 package com.Ha_rlan.vueshoppingback;
 
-import com.Ha_rlan.vueshoppingback.mapper.PermissionMapper;
+import com.Ha_rlan.vueshoppingback.entity.Manager;
+import com.Ha_rlan.vueshoppingback.service.Impl.IManagerServiceImpl;
 import com.Ha_rlan.vueshoppingback.service.Impl.IPermissionServiceImpl;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +11,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -21,6 +20,8 @@ class VueShoppingBackApplicationTests {
     private JavaMailSender javaMailSender;
     @Autowired
     IPermissionServiceImpl iPermissionService;
+    @Autowired
+    IManagerServiceImpl iManagerService;
 
     @Test
     void contextLoads() {
@@ -53,5 +54,12 @@ class VueShoppingBackApplicationTests {
     @Test
     void selectTest(){
         iPermissionService.list();
+    }
+    @Test
+    void managerBasic(){
+       List<Manager> list = iManagerService.selectByPage(1,2,null);
+       list.forEach(
+               System.out::println
+       );
     }
 }

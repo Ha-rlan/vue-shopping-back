@@ -4,13 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--mapper为根元素，namespace指定了命名空间-->
 <mapper namespace="com.Ha_rlan.vueshoppingback.mapper.ClientMapper">
+    <resultMap id="basic_information" type="com.Ha_rlan.vueshoppingback.entity.Client">
+        <id property="id" column="user_id"></id>
+        <result property="username" column="username"></result>
+        <result property="phone" column="user_tel"></result>
+        <result property="email" column="user_email"></result>
+        <result property="create_time" column="create_time"></result>
+        <result property="update_time" column="update_time"></result>
+        <result property="role_name" column="role_name"></result>
+    </resultMap>
     <insert id="insert">
         insert into sp_user(username,password,user_email) values (#{username},#{password},#{email})
     </insert>
     <select id="selectByAc" resultType="com.Ha_rlan.vueshoppingback.entity.Client">
         select username,password FROM sp_user where username = #{username}
     </select>
-    <select id="selectList" resultType="Client">
-        select account,c_password,p_number from c_client
+    <select id="selectBasic" resultMap="basic_information">
+        select user_id,username,user_tel,user_email,create_time,update_time,role_name from sp_user
+        left join sp_role on sp_role.role_id = sp_user.role_id
     </select>
 </mapper>

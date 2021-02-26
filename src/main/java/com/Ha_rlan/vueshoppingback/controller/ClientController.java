@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8081",maxAge = 3600L, allowCredentials = "true")
@@ -40,7 +41,7 @@ public class ClientController {
             return flag;
     }
     @PostMapping ("/login")
-    public boolean select(String username,String password){
+    public boolean select( String username, String password){
         boolean message = false;
         Client client = iClientService.getOne(username);
         if(password.equals(client.getPassword())){
@@ -65,5 +66,9 @@ public class ClientController {
         System.out.println((String) request.getSession().getAttribute("check_code"));
     }
 
+    @GetMapping("/user")
+    public List<Client> basicInformation(){
+            return iClientService.selectBasic();
+    }
 
 }

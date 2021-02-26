@@ -34,4 +34,17 @@ select 查询无法获得对应的参数：
 
 问题：如何去快速且准确的匹配到这个父id和子id ，遍历没的说。肯定是需要遍历的，遍历之后呢？获取到匹配到的集合，然后赋给父集合的子集合。而一切，又是围绕着all这个集合的。
 
+关于权限管理：这边很明显是需要一个权限管理字段的，加一个id又显得多余直接根据role_name来筛查没什么区别，可如此一来我还要role的id作什么用呢？
+结论：加一个role_id来进行筛查
+
+分页：这边返回的数据是total,pagenum,pagesize。
+思路一：自然是新建一个对象，将查询到的集合作为数组传入即可
+思路二：
+
+前端发送数据若为json格式，那么接受数据的必须加上@RequestBody注解
+
+更新用户信息的事务报错：
+Data truncation: Truncated incorrect DOUBLE value: 'asdf@qq.com'
+sql语句里把逗号写成and了，所以发生错误
+
 数据库部分知识太薄弱以及mybatis 和 mybatis-plus

@@ -41,11 +41,12 @@ public class IPermissionServiceImpl implements IPermissionService {
         for (int i = 0; i < first.size(); i++) {
             first.get(i).children = new ArrayList<>();
             for (int j = 0; j < all.size(); j++) {
-                if(first.get(i).id.equals(all.get(j).parent_id)){
+                if(first.get(i).id == all.get(j).parent_id){
                     first.get(i).children.add(all.get(j));
                 }
             }
             getChild(all,first.get(i).children);
         }
     }
+
 }

@@ -77,4 +77,8 @@ public interface IClientService extends IService<Client> {
     default String generateCode() {
         return null;
     }
+    //basic information searching
+    default List<Client> selectBasic(){
+        return null;
+    }
 }

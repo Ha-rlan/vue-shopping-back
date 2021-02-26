@@ -96,4 +96,9 @@ public class IClientServiceImpl extends ServiceImpl<ClientMapper,Client> impleme
         }
         return code.toString();
     }
+
+    @Override
+    public List<Client> selectBasic() {
+        return client.selectBasic();
+    }
 }

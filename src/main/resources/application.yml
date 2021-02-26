@@ -18,3 +18,9 @@ spring:
 mybatis-plus:
   mapper-locations: mapper/*.xml
   type-aliases-package: com.Ha_rlan.vueshoppingback.entity
+
+pagehelper:
+  reasonable: false
+  support-methods-arguments: true
+  params: count = countsql
+  helper-dialect: mysql

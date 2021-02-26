@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Ha_rlan.vueshoppingback.mapper.ManagerMapper">
+    <resultMap id="basic" type="com.Ha_rlan.vueshoppingback.entity.Manager">
+        <id property="id" column="mg_id"></id>
+        <result property="name" column="mg_name"></result>
+        <result property="password" column="mg_pwd"></result>
+        <result property="time" column="mg_time"></result>
+        <result property="role_name" column="role_name"></result>
+        <result property="phone" column="mg_mobile"></result>
+        <result property="email" column="mg_email"></result>
+        <result property="state" column="mg_state"></result>
+        <result property="role_id" column="role_id"></result>
+    </resultMap>
+    <select id="selectBasic" resultMap="basic">
+        select mg_id,mg_name,mg_pwd,mg_time,role_name,mg_mobile,mg_email,mg_state from sp_manager
+        left join sp_role on sp_manager.role_id = sp_role.role_id
+    </select>
+    <select id="selectByPage" resultMap="basic">
+            select mg_id,mg_name,mg_pwd,mg_time,role_name,mg_mobile,mg_email,mg_state from sp_manager
+            left join sp_role on sp_manager.role_id = sp_role.role_id where mg_name like concat('%',#{query},'%')
+    </select>
+    <update id="updateOne">
+        update sp_manager set mg_state = #{status} where mg_id = #{id}
+    </update>
+    <insert id="addManager">
+        insert into sp_manager(mg_name,mg_pwd,mg_email,mg_mobile) values (#{name},#{password},#{email},#{phone})
+    </insert>
+    <select id="selectById" resultMap="basic">
+        select mg_id,mg_name,role_id,mg_mobile,mg_email from sp_manager where mg_id = #{id}
+    </select>
+    <update id="updateManager">
+        update sp_manager set mg_email = #{email},mg_mobile = #{phone} where mg_id = #{id}
+    </update>
+    <delete id="deleteManager">
+        delete from sp_manager where mg_id = #{id}
+    </delete>
+</mapper>
