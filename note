@@ -47,4 +47,12 @@ select 查询无法获得对应的参数：
 Data truncation: Truncated incorrect DOUBLE value: 'asdf@qq.com'
 sql语句里把逗号写成and了，所以发生错误
 
+Column 'ps_id' in field list is ambiguous
+主键命令冲突，确定好是哪个就可以了
+
+权限列表业务逻辑分层：
+第一层是角色名，第二层对应着具体的权限（算法可以直接调用之前的），第三层对应着具体的操作
+
+后端数据列表和树形有什么区别
+
 数据库部分知识太薄弱以及mybatis 和 mybatis-plus
