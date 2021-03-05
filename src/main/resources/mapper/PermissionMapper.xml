@@ -10,8 +10,13 @@
         <result property="controller" column="ps_c"></result>
         <result property="control_function" column="ps_a"></result>
         <result property="level" column="ps_level"></result>
+        <result property="path" column="ps_api_path"></result>
     </resultMap>
     <select id="selectList" resultMap="permission_map">
         select ps_id,ps_name,ps_pid,ps_c,ps_a,ps_level from sp_permission
+    </select>
+    <select id="selectRightsList" resultMap="permission_map">
+        select sp_permission.ps_id,ps_name,ps_api_path,ps_level from sp_permission
+        left join sp_permission_api on sp_permission.ps_id = sp_permission_api.ps_id
     </select>
 </mapper>

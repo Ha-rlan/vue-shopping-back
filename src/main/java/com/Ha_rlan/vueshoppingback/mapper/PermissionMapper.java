@@ -9,4 +9,5 @@ import java.util.List;
 @Mapper
 public interface PermissionMapper extends BaseMapper {
      List<Permission> selectList();
+     List<Permission> selectRightsList();
 }

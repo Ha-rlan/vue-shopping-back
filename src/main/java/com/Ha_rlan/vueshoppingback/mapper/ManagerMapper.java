@@ -18,4 +18,5 @@ public interface ManagerMapper extends BaseMapper {
     Manager selectById(int id);
     void updateManager(Manager manager);
     void deleteManager(int id);
+    void updateRole(int role_id,int id);
 }

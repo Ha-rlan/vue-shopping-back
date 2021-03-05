@@ -19,4 +19,7 @@ public class PermissionController {
     public List<Permission> selectList(){
         return iPermissionService.list();
     }
+
+    @GetMapping("Permission")
+    public List<Permission> allRights(){return iPermissionService.allRights();}
 }

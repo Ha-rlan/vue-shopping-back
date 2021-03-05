@@ -21,18 +21,12 @@ public class IPermissionServiceImpl implements IPermissionService {
         List<Permission> all = permissionMapper.selectList();
         //一级菜单
         List<Permission> first;
-        //二级菜单
-        List<Permission> second = new ArrayList<>();
         //筛选出一级菜单
         first = all.stream().filter(Permission -> Permission.getLevel().equals("0")).collect(Collectors.toList());
        //遍历一级菜单获取二级菜单
         getChild(all,first);
         //这里一级菜单已经获取到了子集，现在让二级菜单也获取到子集
         //如果有四级五级呢？思考一下如何去简化。
-        for (Permission value : first){
-            System.out.println(value);
-        }
-
     return first;
     }
 
@@ -49,4 +43,10 @@ public class IPermissionServiceImpl implements IPermissionService {
         }
     }
 
+    //get all rights
+
+    @Override
+    public List<Permission> allRights() {
+        return permissionMapper.selectRightsList();
+    }
 }

@@ -55,4 +55,9 @@ public class IManagerServiceImpl implements IManagerService {
     public void deleteManager(int id) {
         manage.deleteManager(id);
     }
+
+    @Override
+    public void addRole(int role_id, int id) {
+        manage.updateRole(role_id,id);
+    }
 }

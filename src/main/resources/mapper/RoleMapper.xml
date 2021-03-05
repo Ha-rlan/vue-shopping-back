@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Ha_rlan.vueshoppingback.mapper.RoleMapper">
+    <resultMap id="basic" type="com.Ha_rlan.vueshoppingback.entity.Role">
+        <id property="id" column="role_id"></id>
+        <result property="name" column="role_name"></result>
+        <result property="rights_id" column="ps_ids"></result>
+        <result property="introduce" column="role_desc"></result>
+    </resultMap>
+    <select id="selectAll" resultMap="basic">
+        select role_id,role_name,ps_ids,role_desc from sp_role
+    </select>
+    <update id="updateRight">
+        update sp_role set ps_ids = #{right} where role_id = #{id}
+    </update>
+    <select id="selectById" resultMap="basic">
+        select role_id,role_name,ps_ids,role_desc from sp_role where role_id = #{role_id}
+    </select>
+</mapper>

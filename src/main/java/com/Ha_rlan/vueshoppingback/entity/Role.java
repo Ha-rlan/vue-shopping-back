@@ -9,15 +9,12 @@ import java.util.List;
 
 @Data
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
-public class Permission {
+@AllArgsConstructor
+public class Role {
     public int id;
     public String name;
-    public int parent_id;
-    public String controller;
-    public String control_function;
-    public String level;
+    public String rights_id;
     public List<Permission> children;
-    public String path;
+    public String introduce;
 }

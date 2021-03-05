@@ -11,6 +11,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -61,5 +63,40 @@ class VueShoppingBackApplicationTests {
        list.forEach(
                System.out::println
        );
+    }
+    @Test
+    void hackString(){
+        String permission = "101,0,104,116,115,142,143,144,121,122,123,149,102,107,109,103,111,129,130,134,135,138,139,140,141,112,147,125,110,131,132,133,136,137,145,146,148";
+        String[] strings = permission.split(",");
+        int[] nums = new int[strings.length];
+        for (int i = 0; i < strings.length; i++) {
+            nums[i] = Integer.parseInt(strings[i]);
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+    public void selectionSort(int[] array) {
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j <= array.length - 1; j++) {// 第i个和第j个比较j可以取到最后一位，所以要用j<=array.length-1
+                if (array[i] > array[j]) {// 注意和冒泡排序的区别，这里是i和j比较。
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+    @Test
+    void sortTest(){
+        int[] nums = {3,5,2,4,1};
+        selectionSort(nums);
+    }
+    @Test
+    public void remove(){
+        String[] strings = {"1","2","3"};
+        List<String> list = Arrays.asList(strings);
+        List<String> list1 = new ArrayList<>(list);
+        list1.remove("1");
+        System.out.println(Arrays.toString(strings));
     }
 }

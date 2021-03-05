@@ -32,5 +32,9 @@ public class ManagerController {
     @PutMapping("updateManager")
     public void updateManager(@RequestBody Manager manager){iManagerService.updateManager(manager);}
     @PutMapping("deleteManager")
-    public void deleteManager(int id){iManagerService.deleteManager(id);};
+    public void deleteManager(int id){iManagerService.deleteManager(id);}
+    @PutMapping("addRole")
+    public void addRole(int role_id,int id){
+        iManagerService.addRole(role_id,id);
+    }
 }

@@ -37,4 +37,7 @@
     <delete id="deleteManager">
         delete from sp_manager where mg_id = #{id}
     </delete>
+    <update id="updateRole">
+        update sp_manager set role_id = #{role_id} where mg_id = #{id}
+    </update>
 </mapper>

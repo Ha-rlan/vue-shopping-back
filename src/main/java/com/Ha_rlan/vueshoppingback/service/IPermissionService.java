@@ -10,4 +10,5 @@ public interface IPermissionService{
     default List<Permission> list(){
         return null;
     }
+    default List<Permission> allRights(){return null;}
 }
